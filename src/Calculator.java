@@ -35,7 +35,6 @@ public class Calculator implements ActionListener {
     JButton buttonReciprocal=new JButton("1/x");
     JButton buttonSqrt=new JButton("√x");
     JButton buttoncuberoot=new JButton("³√x");
-   // JButton buttonroot=new JButton("ʸ√x");
     JButton buttonfactorial=new JButton("x!");
     JButton buttonexp=new JButton("e");
     JButton buttonexpraised=new JButton("eˣ");
@@ -44,7 +43,6 @@ public class Calculator implements ActionListener {
     JButton buttonSin=new JButton("sin");
     JButton buttonCos=new JButton("cos");
     JButton buttonTan=new JButton("tan");
-    //JButton buttonRad= new JButton("Rad");
     JButton buttonpi=new JButton("π");
     JButton buttonsininverse=new JButton("sin^-1");
     JButton buttoncosinverse=new JButton("cos^-1");
@@ -209,13 +207,6 @@ public class Calculator implements ActionListener {
         buttoncuberoot.setFocusable(false);
         frame.add(buttoncuberoot);
 
-       /* buttonroot.setBounds(230,120,85,60);
-        buttonroot.setFont(new Font("Arial",Font.BOLD,18));
-        buttonroot.setBackground(new Color(51,51,51));
-        buttonroot.setForeground(new Color(249,246,238));
-        buttonroot.setFocusable(false);
-        frame.add(buttonroot);*/
-
         buttonfactorial.setBounds(230,120,170,60);
         buttonfactorial.setFont(new Font("Arial",Font.BOLD,18));
         buttonfactorial.setBackground(new Color(51,51,51));
@@ -278,13 +269,6 @@ public class Calculator implements ActionListener {
         buttonTan.setBackground(new Color(51,51,51));
         buttonTan.setFocusable(false);
         frame.add(buttonTan);
-
-        /*buttonRad.setBounds(165,240,120,60);
-        buttonRad.setFont(new Font("Arial",Font.BOLD,20));
-        buttonRad.setForeground(Color.DARK_GRAY);
-        buttonRad.setBackground(new Color(51,51,51));
-        buttonRad.setFocusable(false);
-        frame.add(buttonRad);*/
 
         buttonpi.setBounds(0,300,60,60);
         buttonpi.setFont(new Font("Arial",Font.BOLD,20));
@@ -402,7 +386,6 @@ public class Calculator implements ActionListener {
         buttonReciprocal.addActionListener(this);
         buttonSqrt.addActionListener(this);
         buttoncuberoot.addActionListener(this);
-        //buttonroot.addActionListener(this);
         buttonfactorial.addActionListener(this);
         buttonexp.addActionListener(this);
         buttonexpraised.addActionListener(this);
@@ -411,7 +394,6 @@ public class Calculator implements ActionListener {
         buttonSin.addActionListener(this);
         buttonCos.addActionListener(this);
         buttonTan.addActionListener(this);
-        //buttonRad.addActionListener(this);
         buttonpi.addActionListener(this);
         buttonsininverse.addActionListener(this);
         buttoncosinverse.addActionListener(this);
@@ -507,12 +489,6 @@ public class Calculator implements ActionListener {
             result=Math.cbrt(num1);
             textfield.setText(""+result);
         }
-       /* else if(source==buttonroot){
-            num1=Double.parseDouble(textfield.getText());
-            operator='√';
-            num2 = Double.parseDouble(textfield.getText());
-            result = Math.pow(num1, num2);
-            textfield.setText(""+result);*/
 
         else if(source==buttonfactorial){
             num1=Double.parseDouble(textfield.getText());
@@ -577,11 +553,6 @@ public class Calculator implements ActionListener {
                 result=Math.tan(num1);
             textfield.setText(""+result);
         }
-       /* else if(source==buttonRad){
-            if(frame.getWidth()==512)
-                frame.setSize(317,400);
-            else
-                frame.setSize(512,400);*/
 
         else if(source==buttonpi)
             textfield.setText(""+Math.PI);
@@ -624,8 +595,6 @@ public class Calculator implements ActionListener {
         else if(source==buttonNegate){
             num1=Double.parseDouble(textfield.getText());
             result=num1*(-1);
-           /*num2 = Double.parseDouble(textfield.getText());
-            result=num2*(-1);*/
             textfield.setText(""+result);
         }
         else if(source==buttonPercentage){
