@@ -35,7 +35,7 @@ public class Calculator implements ActionListener {
     JButton buttonReciprocal=new JButton("1/x");
     JButton buttonSqrt=new JButton("√x");
     JButton buttoncuberoot=new JButton("³√x");
-    JButton buttonroot=new JButton("ʸ√x");
+   // JButton buttonroot=new JButton("ʸ√x");
     JButton buttonfactorial=new JButton("x!");
     JButton buttonexp=new JButton("e");
     JButton buttonexpraised=new JButton("eˣ");
@@ -209,14 +209,14 @@ public class Calculator implements ActionListener {
         buttoncuberoot.setFocusable(false);
         frame.add(buttoncuberoot);
 
-        buttonroot.setBounds(230,120,85,60);
+       /* buttonroot.setBounds(230,120,85,60);
         buttonroot.setFont(new Font("Arial",Font.BOLD,18));
         buttonroot.setBackground(new Color(51,51,51));
         buttonroot.setForeground(new Color(249,246,238));
         buttonroot.setFocusable(false);
-        frame.add(buttonroot);
+        frame.add(buttonroot);*/
 
-        buttonfactorial.setBounds(315,120,85,60);
+        buttonfactorial.setBounds(230,120,170,60);
         buttonfactorial.setFont(new Font("Arial",Font.BOLD,18));
         buttonfactorial.setBackground(new Color(51,51,51));
         buttonfactorial.setForeground(new Color(249,246,238));
@@ -402,7 +402,7 @@ public class Calculator implements ActionListener {
         buttonReciprocal.addActionListener(this);
         buttonSqrt.addActionListener(this);
         buttoncuberoot.addActionListener(this);
-        buttonroot.addActionListener(this);
+        //buttonroot.addActionListener(this);
         buttonfactorial.addActionListener(this);
         buttonexp.addActionListener(this);
         buttonexpraised.addActionListener(this);
@@ -469,16 +469,7 @@ public class Calculator implements ActionListener {
             operator='/';
             textfield.setText("");
         }
-        else if(source==buttonEqual){
-            num2=Double.parseDouble(textfield.getText());
-            switch(operator){
-                case '+': result=num1+num2; break;
-                case '-': result=num1-num2; break;
-                case '*': result=num1*num2; break;
-                case '/': result=num1/num2; break;
-            }
-            textfield.setText(""+result);
-        }
+
         else if(source==buttonClear)
             textfield.setText("");
         else if(source==buttonSquare){
@@ -491,11 +482,16 @@ public class Calculator implements ActionListener {
             result=Math.pow(num1,3);
             textfield.setText(""+result);
         }
-        else if(source==buttonraised){
-            num1=Double.parseDouble(textfield.getText());
-            operator='^';
-            textfield.setText("");
-        }
+        else if (source == buttonraised) {
+            num1 = Double.parseDouble(textfield.getText());
+            operator = '^';
+            textfield.setText("");  // Clear the textfield for entering num2
+
+            num2 = Double.parseDouble(textfield.getText());
+            result = Math.pow(num1, num2);
+            textfield.setText("" + result);
+
+    }
         else if(source==buttonReciprocal){
             num1=Double.parseDouble(textfield.getText());
             result=1/num1;
@@ -511,11 +507,13 @@ public class Calculator implements ActionListener {
             result=Math.cbrt(num1);
             textfield.setText(""+result);
         }
-        else if(source==buttonroot){
+       /* else if(source==buttonroot){
             num1=Double.parseDouble(textfield.getText());
             operator='√';
-            textfield.setText("");
-        }
+            num2 = Double.parseDouble(textfield.getText());
+            result = Math.pow(num1, num2);
+            textfield.setText(""+result);*/
+
         else if(source==buttonfactorial){
             num1=Double.parseDouble(textfield.getText());
             result=1;
@@ -547,7 +545,7 @@ public class Calculator implements ActionListener {
             num1=Double.parseDouble(textfield.getText());
             if(frame.getTitle().equals("Calculator")){
                 if(frame.getWidth()==512)
-                    result=Math.sin(Math.toRadians(num1));
+                    result=Math.sin(Math.toDegrees(num1));
                 else
                     result=Math.sin(num1);
             }
@@ -559,7 +557,7 @@ public class Calculator implements ActionListener {
             num1=Double.parseDouble(textfield.getText());
             if(frame.getTitle().equals("Calculator")){
                 if(frame.getWidth()==512)
-                    result=Math.cos(Math.toRadians(num1));
+                    result=Math.cos(Math.toDegrees(num1));
                 else
                     result=Math.cos(num1);
             }
@@ -571,7 +569,7 @@ public class Calculator implements ActionListener {
             num1=Double.parseDouble(textfield.getText());
             if(frame.getTitle().equals("Calculator")){
                 if(frame.getWidth()==512)
-                    result=Math.tan(Math.toRadians(num1));
+                    result=Math.tan(Math.toDegrees(num1));
                 else
                     result=Math.tan(num1);
             }
@@ -626,6 +624,8 @@ public class Calculator implements ActionListener {
         else if(source==buttonNegate){
             num1=Double.parseDouble(textfield.getText());
             result=num1*(-1);
+           /*num2 = Double.parseDouble(textfield.getText());
+            result=num2*(-1);*/
             textfield.setText(""+result);
         }
         else if(source==buttonPercentage){
@@ -642,6 +642,18 @@ public class Calculator implements ActionListener {
             result=Math.pow(10,num1);
             textfield.setText(""+result);
         }
+        else if(source==buttonEqual){
+            num2=Double.parseDouble(textfield.getText());
+            switch(operator){
+                case '+': result=num1+num2; break;
+                case '-': result=num1-num2; break;
+                case '*': result=num1*num2; break;
+                case '/': result=num1/num2; break;
+                case '^': result=Math.pow(num1,num2); break;
+            }
+            textfield.setText(""+result);
+        }
+
     }
 
     public static void main(String[] args){
