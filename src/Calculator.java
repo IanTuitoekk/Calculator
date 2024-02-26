@@ -473,7 +473,7 @@ public class Calculator implements ActionListener {
             result = Math.pow(num1, num2);
             textfield.setText("" + result);
 
-    }
+        }
         else if(source==buttonReciprocal){
             num1=Double.parseDouble(textfield.getText());
             result=1/num1;
@@ -558,38 +558,20 @@ public class Calculator implements ActionListener {
             textfield.setText(""+Math.PI);
         else if(source==buttonsininverse){
             num1=Double.parseDouble(textfield.getText());
-            if(frame.getTitle().equals("Calculator")){
-                if(frame.getWidth()==512)
-                    result=Math.toDegrees(Math.asin(num1));
-                else
-                    result=Math.asin(num1);
-            }
-            else
-                result=Math.asin(num1);
+            result=Math.toDegrees(Math.asin(num1));
+         
             textfield.setText(""+result);
         }
         else if(source==buttoncosinverse){
             num1=Double.parseDouble(textfield.getText());
-            if(frame.getTitle().equals("Calculator")){
-                if(frame.getWidth()==512)
-                    result=Math.toDegrees(Math.acos(num1));
-                else
-                    result=Math.acos(num1);
-            }
-            else
-                result=Math.acos(num1);
+            result=Math.toDegrees(Math.acos(num1));
+          
             textfield.setText(""+result);
         }
         else if(source==buttontaninverse){
             num1=Double.parseDouble(textfield.getText());
-            if(frame.getTitle().equals("Calculator")){
-                if(frame.getWidth()==512)
-                    result=Math.toDegrees(Math.atan(num1));
-                else
-                    result=Math.atan(num1);
-            }
-            else
-                result=Math.atan(num1);
+            result=Math.toDegrees(Math.atan(num1));
+            
             textfield.setText(""+result);
         }
         else if(source==buttonNegate){
