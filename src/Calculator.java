@@ -35,6 +35,7 @@ public class Calculator implements ActionListener {
     JButton buttonReciprocal=new JButton("1/x");
     JButton buttonSqrt=new JButton("√x");
     JButton buttoncuberoot=new JButton("³√x");
+    JButton buttonRoot=new JButton("y√x");
     JButton buttonfactorial=new JButton("x!");
     JButton buttonexp=new JButton("e");
     JButton buttonexpraised=new JButton("eˣ");
@@ -207,7 +208,14 @@ public class Calculator implements ActionListener {
         buttoncuberoot.setFocusable(false);
         frame.add(buttoncuberoot);
 
-        buttonfactorial.setBounds(230,120,170,60);
+        buttonRoot.setBounds(230,120,85,60);
+        buttonRoot.setFont(new Font("Arial",Font.BOLD,18));
+        buttonRoot.setBackground(new Color(51,51,51));
+        buttonRoot.setForeground(new Color(249,246,238));
+        buttonRoot.setFocusable(false);
+        frame.add(buttonRoot);
+
+        buttonfactorial.setBounds(315,120,85,60);
         buttonfactorial.setFont(new Font("Arial",Font.BOLD,18));
         buttonfactorial.setBackground(new Color(51,51,51));
         buttonfactorial.setForeground(new Color(249,246,238));
@@ -386,6 +394,7 @@ public class Calculator implements ActionListener {
         buttonReciprocal.addActionListener(this);
         buttonSqrt.addActionListener(this);
         buttoncuberoot.addActionListener(this);
+        buttonRoot.addActionListener(this);
         buttonfactorial.addActionListener(this);
         buttonexp.addActionListener(this);
         buttonexpraised.addActionListener(this);
@@ -489,7 +498,16 @@ public class Calculator implements ActionListener {
             result=Math.cbrt(num1);
             textfield.setText(""+result);
         }
+        else if (source == buttonRoot) {
+            num1 = Double.parseDouble(textfield.getText());
+            textfield.setText("");
+            operator='√';
+            num2=Double.parseDouble(textfield.getText());;
 
+            result=Math.pow(num1, 1.0 /num2);
+
+            textfield.setText("" + result);
+        }
         else if(source==buttonfactorial){
             num1=Double.parseDouble(textfield.getText());
             result=1;
@@ -559,19 +577,19 @@ public class Calculator implements ActionListener {
         else if(source==buttonsininverse){
             num1=Double.parseDouble(textfield.getText());
             result=Math.toDegrees(Math.asin(num1));
-         
+
             textfield.setText(""+result);
         }
         else if(source==buttoncosinverse){
             num1=Double.parseDouble(textfield.getText());
             result=Math.toDegrees(Math.acos(num1));
-          
+
             textfield.setText(""+result);
         }
         else if(source==buttontaninverse){
             num1=Double.parseDouble(textfield.getText());
             result=Math.toDegrees(Math.atan(num1));
-            
+
             textfield.setText(""+result);
         }
         else if(source==buttonNegate){
@@ -601,6 +619,7 @@ public class Calculator implements ActionListener {
                 case '*': result=num1*num2; break;
                 case '/': result=num1/num2; break;
                 case '^': result=Math.pow(num1,num2); break;
+                case '√':result=Math.pow(num1,1/num2);break;
             }
             textfield.setText(""+result);
         }
